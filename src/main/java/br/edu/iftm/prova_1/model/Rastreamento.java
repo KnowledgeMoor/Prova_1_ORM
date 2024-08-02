@@ -28,7 +28,13 @@ public class Rastreamento {
     private String status;
     private String localizacao;
 
+    public Rastreamento(Date data, String status, String localizacao){
+        this.data = data;
+        this.status = status;
+        this.localizacao = localizacao;
+    }
+
     public String getResumo(){
-        return "Data: " + data + " - Status: " + status + " - Localização: " + localizacao;
+        return "Data: " + data + "\nStatus: " + status + "\nLocalização: " + localizacao;
     }
 }

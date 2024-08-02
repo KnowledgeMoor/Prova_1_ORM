@@ -1,9 +1,14 @@
 package br.edu.iftm.prova_1.model;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,13 +29,21 @@ public class Pacote {
 
     private String id_pacote;
     private String destinatario;
+    private String status;
 
     @OneToOne
     private Endereco endereco;
+    @OneToMany
+	private List<Rastreamento> rastreamentos = new ArrayList<Rastreamento>();
 
-    private String status;
+    public Pacote(String id_pacote, String destinatario, String status){
+        this.id_pacote = id_pacote;
+        this.destinatario = destinatario;
+        this.status = status;
+    }
 
-    public void atualizarStatus(String status) {
+    public void atualizarStatus(String status, Date dataHora, String localizacao) {
+        rastreamentos.add(new Rastreamento(dataHora, status, localizacao));
         this.status = status;
     }
 
