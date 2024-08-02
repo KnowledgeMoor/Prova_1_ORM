@@ -36,10 +36,15 @@ public class Pacote {
     @OneToMany
 	private List<Rastreamento> rastreamentos = new ArrayList<Rastreamento>();
 
-    public Pacote(String id_pacote, String destinatario, String status){
+    public Pacote(String id_pacote, String destinatario, Endereco endereco){
         this.id_pacote = id_pacote;
         this.destinatario = destinatario;
-        this.status = status;
+        this.endereco = endereco;
+    }
+
+    public Pacote(String id_pacote, String destinatario){
+        this.id_pacote = id_pacote;
+        this.destinatario = destinatario;
     }
 
     public void atualizarStatus(String status, Date dataHora, String localizacao) {

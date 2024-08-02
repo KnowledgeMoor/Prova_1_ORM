@@ -6,10 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.iftm.prova_1.model.Endereco;
 import br.edu.iftm.prova_1.model.Pacote;
-import br.edu.iftm.prova_1.model.Rastreamento;
+import br.edu.iftm.prova_1.repository.EnderecoRepository;
 import br.edu.iftm.prova_1.repository.PacoteRepository;
-import br.edu.iftm.prova_1.repository.RastreamentoRepository;
+
 
 @Service
 public class PacoteService {
@@ -17,7 +18,8 @@ public class PacoteService {
     @Autowired
     private PacoteRepository repository;
     @Autowired
-    private RastreamentoRepository rastreamentoRepository;
+    private EnderecoRepository enderecoRepository;
+
 
     public List<Pacote> pacotes() {
 		List<Pacote> lista = new ArrayList<Pacote>();
@@ -26,6 +28,8 @@ public class PacoteService {
 	}
 
     public Pacote salva(Pacote item) {
+        Endereco endereco = item.getEndereco();
+        enderecoRepository.save(endereco);
 		return repository.save(item);
 	}
 
@@ -33,17 +37,11 @@ public class PacoteService {
 		return repository.findById(id).get();
 	}
 
-    public Pacote atualiza(Long id, Pacote pacote, Long id_rastreamento) {
+    public Pacote atualiza(Long id, Pacote pacote) {
 		Pacote pacoteExistente = repository.findById(id).get();
-        Rastreamento rastreamento = rastreamentoRepository.findById(id_rastreamento).get();
 
 		pacoteExistente.setId_pacote(pacote.getId_pacote());
 		pacoteExistente.setDestinatario(pacote.getDestinatario());
-		pacoteExistente.setEndereco(pacote.getEndereco());
-        
-        rastreamentoRepository.save(rastreamento);
-        pacoteExistente.atualizarStatus(rastreamento.getStatus(), rastreamento.getData(), rastreamento.getLocalizacao());
-		
         return repository.save(pacoteExistente);
 	}
 
