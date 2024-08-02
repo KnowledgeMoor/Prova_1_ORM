@@ -1,0 +1,95 @@
+# Requisições HTTP
+
+# Pacote
+# ----------------------------
+
+### Busca de todos os pacotes
+GET /pacotes HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+### Registrar um pacote
+POST /pacotes HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"id_pacote":"0000000001",
+    "destinatario": "Gabriel",
+    "endereco":{
+        "rua":"Rua das ruas",
+        "numero": "1",
+        "bairro":"Bairro 1",
+        "cidade":"Cidade 1",
+        "estado":"Estado 1",
+        "cep":"0000001"
+    }
+}
+
+
+### Buscar um pacote
+GET /pacotes/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Atualização de pacote
+PUT /pacotes/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"id_pacote":"0000000002",
+    "destinatario": "Trump"
+}
+
+
+### Exclusão de um pacote
+DELETE /pacotes/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+# Rastreamento
+# ----------------------------
+
+### Registrar um Rastreamento
+POST /rastreamentos HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"data":"2024-01-01",
+    "status": "em trânsito",
+    "localizacao":"São Paulo"
+}
+
+
+### Buscar todos os rastreamentos de um pacote
+GET /rastreamentos/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+
+# Endereco
+# ----------------------------
+
+### Buscar todos os endereços
+GET /enderecos HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+### Registrar um endereco
+POST /enderecos HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"rua":"Rua das ruas",
+    "numero": "1",
+    "cidade":"Cidade 1",
+    "estado":"Estado 1",
+    "cep":"00000000"
+}
