@@ -81,7 +81,7 @@ Este projeto é uma aplicação web RESTful desenvolvida com **Spring Boot** que
 1. Clone o projeto:
 
 ```bash
-git clone https://github.com/KnowledgeMoor/Prova_1_ORM.git
+git clone https://github.com/KnowledgeMoor/rastreamento-pacotes-api.git
 ```
 
 ## 🛠 Console do H2
