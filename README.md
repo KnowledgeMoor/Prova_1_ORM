@@ -86,8 +86,8 @@ git clone https://github.com/KnowledgeMoor/Prova_1_ORM.git
 
 ## 🛠 Console do H2
 
-Acesse o console do banco em: http://localhost:8080/h2-console
-Configuração:
-JDBC URL: jdbc:h2:mem:testdb
-User: sa
-Password: (em branco)
+- Acesse o console do banco em: http://localhost:8080/h2-console
+- Configuração:
+  - JDBC URL: jdbc:h2:mem:testdb
+  - User: sa
+  - Password: (em branco)
